@@ -1,5 +1,6 @@
 #include <iostream>
 #include <conio.h>
+#include <string>
 
 using namespace std;
 
@@ -9,16 +10,12 @@ int main()
 
 	// Variable Declaration
 
-	double proA[7], proB[7], proC[7];
+	char let[50];
 
-	int i, a;
-
-
+	int i, a = 0, cap;
 
 
 	cout << "                   Press any key to start the program... \n";
-
-	
 
 	_getch();
 
@@ -26,120 +23,86 @@ int main()
 
 	cout << "     Good day, User!\n\n";
 
-	cout << "     This program would be able to store a province's \n     general temperature each day for a week!\n\n";
+	cout << "     This program would be able to sort an array \n     of characters and would let you declare its size!\n\n";
 
-	cout << "     To get started, kindly enter the temperature each day \n     for this week in each province (3): \n\n";
+	cout << "     To get started, kindly enter the characters you \n     wish to include in the array: \n\n";
+
 
 
 	_getch();
 
+	cout << "     How big would you like your array to be? (Capacity): ";
 
-	cout << "     Kindly enter temperature each day for this week in Province A: \n\n";
+	cin >> cap;
 
-	// Initialize
+	cout << "\n\n";
 
-	for (i = 0; i < 7; ++i)
+	cin.ignore();
 
-		proA[i] = 0.0;
+	cout << "     Input your character/s below \n";
 
-	// Reading Data Into An Array - Province A
 
-	for (i = 0; i < 7; ++i)
+	string* array = new string[cap];
+
+	for (int i = 0; i < cap; i++)
 
 	{
 
-		cout << "          ";
+		cout << "         \n        : ";
 
-		cin >> proA[i];
+		getline(cin, array[i]);
 
 	}
 
+	cout << "\n\n";
 
+	bool swap = true;
 
-	cout << "     Kindly enter temperature each day for this week in Province B: \n\n";
+	string b;
 
-
-
-	// Initialize
-
-	for (i = 0; i < 7; ++i)
-
-		proB[i] = 0.0;
-
-	// Reading Data Into An Array - Province B
-
-	for (i = 0; i < 7; ++i)
+	while (swap)
 
 	{
 
-		cout << "          ";
+		swap = false;
 
-		cin >> proB[i];
+		a++;
+
+		for (int l = 0; l < cap - a; l++)
+
+		{
+
+			if (array[l] > array[l + 1])
+
+			{
+
+				b = array[l];
+
+				array[l] = array[l + 1];
+
+				array[l + 1] = b;
+
+				swap = true;
+
+			}
+
+		}
+
 	}
 
-	cout << "     Kindly enter temperature each day for this week in Province C: \n\n";
+	cout << "     Below is the sorted array for your characters: \n\n";
 
-	// Initialize
-
-	for (i = 0; i < 7; ++i)
-
-		proC[i] = 0.0;
-
-	// Reading Data Into An Array - Province C
-
-	for (i = 0; i < 7; ++i)
+	for (int c = 0; c < cap; c++)
 
 	{
 
-		cout << "          ";
-
-		cin >> proC[i];
+		cout << "        " << array[c] << "\n";
 
 	}
-
-
-	cout << "     In the first province, the temperatures you've inputted are: \n\n";
-
-	// Printing The Arrays
-
-	for (i = 0; i < 7; ++i)
-
-		cout << "         Day " << i + 1 << ": " << proA[i] << " degrees" << "\n";
-
-	cout << "\n     Proceed?\n";
-
-
-	_getch();
-
-	cout << "     In the second province, the temperatures you've inputted are: \n\n";
-
-	for (i = 0; i < 7; ++i)
-
-		cout << "         Day " << i + 1 << ": " << proB[i] << " degrees" << "\n";
-
-	cout << "\n     Proceed?\n";
-
-	
-	_getch();
-
-	cout << "     In the third province, the temperatures you've inputted are: \n\n";
-
-	for (i = 0; i < 7; ++i)
-
-		cout << "         Day " << i + 1 << ": " << proC[i] << " degrees" << "\n";
-
-	cout << "\n     Proceed?\n";
-
-	_getch();
-
-	cout << "                   End of program, nothing follows... :)";
-
-	cout << "\n";
 
 	cout << "                   Press any key to end the program... \n";
 
 	_getch();
 
 	return 0;
-
 }
